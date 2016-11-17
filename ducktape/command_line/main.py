@@ -162,7 +162,7 @@ def main():
         (cluster_mod_name, cluster_class_name) = args_dict["cluster"].rsplit('.', 1)
         cluster_mod = importlib.import_module(cluster_mod_name)
         cluster_class = getattr(cluster_mod, cluster_class_name)
-        session_context.cluster = cluster_class(cluster_file=args_dict["cluster_file"])
+        session_context.cluster = cluster_class(cluster_file=args_dict["cluster_file"]) # VagrantCluster TODO: delete this comment
     except:
         print "Failed to load cluster: ", str(sys.exc_info()[0])
         print traceback.format_exc(limit=16)

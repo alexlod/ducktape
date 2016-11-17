@@ -40,6 +40,10 @@ class RemoteAccount(HttpMixin):
         return r
 
     @property
+    def is_windows(self):
+        return "windows" in self.hostname
+
+    @property
     def local(self):
         """Returns true if this 'remote' account is actually local. This is only a heuristic, but should work for simple local testing."""
         return self.hostname == "localhost" and self.user is None and self.ssh_args is None

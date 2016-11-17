@@ -40,6 +40,7 @@ class JsonCluster(Cluster):
             cluster_json = json.load(open(os.path.abspath(cluster_file)))
 
         try:
+            # TODO: this is where I'll create either a Linux remote account, or a Windows remote account.
             node_accounts = [RemoteAccount(ninfo["hostname"], ninfo.get("user"), ninfo.get("ssh_args"),
                                            ssh_hostname=ninfo.get("ssh_hostname"),
                                            externally_routable_ip=ninfo.get("externally_routable_ip"))
@@ -61,6 +62,7 @@ class JsonCluster(Cluster):
         return len(self.available_nodes)
 
     def request(self, nslots):
+        # TODO: this is where it requests how many machines it wants. Will need tags for linux and windows. And will probably want different lists, one for Linux and another for Windows
         if nslots > self.num_available_nodes():
             err_msg = "There aren't enough available nodes to satisfy the resource request. " \
                 "Total cluster size: %d, Requested: %d, Already allocated: %d, Available: %d. " % \

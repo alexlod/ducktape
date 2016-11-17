@@ -128,6 +128,10 @@ class VagrantCluster(JsonCluster):
             cmd = "/sbin/ifconfig eth1 "
         cmd += "| grep 'inet addr' | tail -n 1 | egrep -o '[0-9\.]+' | head -n 1 2>&1"
 
-        output = "".join(node_account.ssh_capture(cmd))
+        if node_account.is_windows:
+            print "windows!"
+            output = node_account.ssh_hostname
+        else:
+            output = "".join(node_account.ssh_capture(cmd))
         return output.strip()
 

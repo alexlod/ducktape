@@ -64,7 +64,7 @@ class Service(TemplateRenderer):
         self.context.services.append(self)
 
         self.nodes = []
-        self.allocate_nodes()
+        self.allocate_nodes() # TODO: will want to change this to be about how many windows vs linux machines to allocate.
 
     def __repr__(self):
         return "<%s: %s>" % (self.who_am_i(), "num_nodes: %d, nodes: %s" %
